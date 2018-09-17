@@ -1,1 +1,1 @@
-https://github.com/mooncake4132/docker-cronicle
+git@github.com:mooncake4132/docker-cronicle.git

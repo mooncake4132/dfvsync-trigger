@@ -3,6 +3,18 @@ pool:
 
 steps:
 - bash: |
-    pip install --upgrade pip setuptools
+    mkdir -p ~/.ssh
+    echo "$GITHUB_PRIVATE_KEY" | tr '|' '\n' > ~/.ssh/id_rsa
+    chmod 700 ~/.ssh/id_rsa
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    ssh-keyscan -H 'github.com' >> ~/.ssh/known_hosts
+  displayName: 'Setup Git credentials'
+  env:
+    GITHUB_PRIVATE_KEY: $(GITHUB_PRIVATE_KEY)
+
+- bash: pip3 install setuptools
+  displayName: 'Install Setuptools'
+
 - script: ./sync_repos.sh
   displayName: 'Sync Repos'

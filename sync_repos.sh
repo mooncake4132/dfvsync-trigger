@@ -10,9 +10,10 @@ trigger_dfvsync() {
     tmpdir=$(mktemp -d)
     git clone "$url" "$tmpdir"
     pushd "$tmpdir"
+    ls
 
-    pip install "$DFVSYNC_PACKAGE"
-    dfvsync
+    pip3 install "$DFVSYNC_PACKAGE"
+    python3 -m dfvsync
 }
 
 

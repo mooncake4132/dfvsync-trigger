@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-DFVSYNC_PACKAGE=https://github.com/mooncake4132/dfvsync
+DFVSYNC_PACKAGE=git+https://github.com/mooncake4132/dfvsync
 
 
 trigger_dfvsync() {
